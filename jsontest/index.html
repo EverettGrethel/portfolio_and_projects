@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><i id="search"></i>Search</li>
+        </ul>
+    </nav>
+
+    <script src="lottie.js"></script>
+
+    <script>
+        var animation = bodymovin.loadAnimation({
+            container: document.getElementById('search'),
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            path: 'data.json'
+        })
+
+        btn = document.getElementById('search');
+
+        btn.addEventListener('mouseenter', function() {
+            animation.play();
+        })
+
+        btn.addEventListener('mouseleave', function() {
+            animation.stop();
+        })
+
+    </script>
+
+</body>
+</html>
