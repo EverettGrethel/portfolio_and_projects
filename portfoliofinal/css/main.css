@@ -482,7 +482,7 @@ footer a {
 	.resp6 {
 		grid-column: 3/4;
 		grid-row: 2/3;
-	}
+    }
 
     .hero {
         background-image: url("../img/beach_hero.jpg");
