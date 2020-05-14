@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+    <script>
+        //Procedural Version
+
+        function computerPlay() {
+            let choices = ['rock', 'paper', 'scissors'];
+            let randint = Math.floor((Math.random() * 3));
+            console.log(randint);
+            return choices[randint];
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase();
+            if (playerSelection == computerSelection) {
+                return 'Draw! No one wins!';
+            } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+                return 'You win! Rock beats Scissors!';
+            } else if (playerSelection == 'rock' && computerSelection == 'paper') {
+                return 'You lose! Paper beats Rock!';
+            } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+                return 'You win! Scissors beats Paper!'
+            } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+                return 'You lose! Rock beats Scissors!';
+            } else if (playerSelection == 'paper' && computerSelection == 'rock') {
+                return 'You win! Paper beats Rock!';
+            } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+                return 'You lose! Scissors beats Paper!'
+            } else {
+                return 'Invalid input';
+            }
+        }
+
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                let playerSelection = prompt();
+                let result = playRound(playerSelection, computerPlay());
+                console.log(result);
+            }
+        }
+
+        //Constructor Version
+
+        const choices = ['rock', 'paper', 'scissors'];
+
+        function ChoiceType(type, lose, win) {
+            this.type = type;
+            this.lose = lose;
+            this.win = win;
+            this.playRound2 = function (computerSelection) {
+                let msg;
+                console.log("computer: " + computerSelection);
+                if (computerSelection == this.lose) {
+                    msg = `You lose! ${choices[this.lose]} beats ${choices[this.type]}!`;
+                    return msg;
+                } else if (computerSelection == this.lose) {
+                    msg = `You win! ${choices[this.type]} beats ${choices[this.win]}!`;
+                } else if (computerSelection == this.type) {
+                    msg = 'Draw! No one wins!';
+                } else {
+                    msg = 'Invalid input.';
+                }
+                return msg;
+            }
+        }
+
+        function computerPlay2() {
+            let randint = Math.floor((Math.random() * 3));
+            return randint;
+        }
+
+        function playerFormulate(player) {
+            player = player.toLowerCase();
+            if (player == 'rock') {
+                return 0;
+            } else if (player == 'paper') {
+                return 1;
+            } else if (player == 'scissors') {
+                return 2;
+            } else {
+                return 3;
+            }
+        }
+
+        const rock = new ChoiceType(0, 1, 2);
+        const paper = new ChoiceType(1, 2, 0);
+        const scissors = new ChoiceType(2, 0, 1);
+        const choices_obj = [rock, paper, scissors];
+
+        function game2(rounds) {
+            for (let i = 0; i < rounds; i++) {
+                let playerSelection = prompt();
+                playerSelection = playerFormulate(playerSelection);
+                let computerSelection = computerPlay2();
+                let result = choices_obj[playerSelection].playRound2(computerSelection);
+                console.log(result);
+            }
+        }
+
+    </script>
+</body>
+</html>
